@@ -3,8 +3,15 @@ const path = require('path');
 
 const { WebSocket, WebSocketServer } = require('ws');
 
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static('public'));
+
 const WS_PORT = 8080
 const wss = new WebSocketServer({ port: WS_PORT })
+
 wss.on('listening', () => {
     console.log( `WebSocketServer listening on port ${WS_PORT}`)
 })
@@ -35,8 +42,6 @@ wss.on('connection', function (ws) {
         })
     })
 })
-
-const app = express();
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));

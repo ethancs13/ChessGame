@@ -19,6 +19,7 @@ table.chess_table tr:nth-child(even) td:nth-child(even){
 table.chess_table tr:nth-child(odd) td:nth-child(even),
 table.chess_table tr:nth-child(even) td:nth-child(odd){
  background-color: gray;
+ height: 122.88px;
 }
 table.chess_table tr td.WP { /* blancs */
  color: white; 
@@ -34,11 +35,21 @@ table.chess_table tr th.turn_square {
   /* border: 0.1em solid black; */
 }
 
-#mydiv {
-    position: absolute;
-    z-index: 9;
-    text-align: center;
-    cursor: move;
-    top: 50px;
-    left: 95px;
-  }
+/* .b_pawn_drag {
+  transform: translateX(30px);
+}
+.w_pawn_drag {
+  transform: translateX(30px);
+  bottom: 40px;
+} */
+/* .b_piece_drag {
+  top: 50px;
+
+} */
+
+.mydiv {
+  position: relative;
+  cursor: move;
+  height: 100%;
+  text-align: center;
+}
