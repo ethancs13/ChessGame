@@ -21,23 +21,18 @@ wss.on('connection', function (ws) {
 
     ws.on('message', function (data) {
         let jsonData = JSON.parse(data);
-        if (jsonData.name) {
-            console.log(`${jsonData.name} has connected.`);
-            ws.name = jsonData.name
-            wss.clients.forEach(function (client) {
-                if (client.readyState === WebSocket.OPEN && ws.name !== client.name) {
+        wss.clients.forEach(function (client) {
+            if (client.readyState === WebSocket.OPEN) {
 
-                    client.send( JSON.stringify({ announcement: `${ws.name} has joined.` }))
-                }
-            })
-        }
+                client.send( JSON.stringify(jsonData))
+            }
+        })
     })
 
     ws.on('close', function () {
-        console.log(`${ws.name} has left.`)
         wss.clients.forEach(function (client) {
             if (client.readyState === WebSocket.OPEN) {
-                client.send( JSON.stringify({ announcement: `${ws.name} has left.` }))
+                client.send({msg:'client left.'})
             }
         })
     })
