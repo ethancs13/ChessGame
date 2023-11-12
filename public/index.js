@@ -68,7 +68,7 @@ function dragElement(elmnt) {
 }
 
 
-var ws = new WebSocket(location.origin.replace(/^http/, 'ws'));
+var ws = new WebSocket(location.origin);
 
 ws.onopen = () => {
     console.log('Connection opened!');
