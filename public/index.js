@@ -67,7 +67,7 @@ function dragElement(elmnt) {
     }
 }
 
-const ws = new WebSocket('ws://');
+const ws = new WebSocket();
 
 ws.onopen = () => {
     console.log('Connection opened!');
