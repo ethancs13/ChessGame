@@ -67,8 +67,8 @@ function dragElement(elmnt) {
     }
 }
 
-var HOST = location.origin.replace('/http/', 'ws')
-var ws = new WebSocket(HOST);
+
+var ws = new WebSocket(location.origin.replace(/^http/, 'ws'));
 
 ws.onopen = () => {
     console.log('Connection opened!');
