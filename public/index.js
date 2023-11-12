@@ -68,7 +68,7 @@ function dragElement(elmnt) {
 }
 
 
-var ws = new WebSocket('wss');
+var ws = new WebSocket('wss://polar-inlet-96008-0829887bcf65.herokuapp.com/');
 
 ws.onopen = () => {
     console.log('Connection opened!');
