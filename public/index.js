@@ -31,6 +31,7 @@ function dragElement(elmnt) {
         e.ondragstart = function() {
             return false;
         }
+
         elmnt.style.top = 0;
         elmnt.style.left = 0;
         // e = e || window.event;
@@ -45,18 +46,19 @@ function dragElement(elmnt) {
         // console.log(`LEFT: ${pos3}\nTOP: ${pos4}`)
         // set the element's new position:
         elmnt.style.top = pos2 - 45 + "px";
-        elmnt.style.left = pos1 - 61.469 + "px";
-        let num;
+        elmnt.style.left = pos1 - 50 + "px";
+        let id;
+        
         if (e.target.querySelector('div')){
-            num = e.target.querySelector('div').id;
+            id = e.target.querySelector('div').id;
         } else {
-            num = e.target.id;
+            id = e.target.id;
         }
         // console.log(e.target)
         ws.send(JSON.stringify({
             pos2,
             pos1,
-            id: num,
+            id,
         }))
     }
 
@@ -68,7 +70,8 @@ function dragElement(elmnt) {
 }
 
 
-var ws = new WebSocket('wss://polar-inlet-96008-0829887bcf65.herokuapp.com/');
+// var ws = new WebSocket('wss://polar-inlet-96008-0829887bcf65.herokuapp.com/');
+var ws = new WebSocket("ws://localhost:8080");
 
 ws.onopen = () => {
     console.log('Connection opened!');
@@ -79,5 +82,5 @@ ws.onmessage = ({ data }) => {
     let pos1 = JSON.parse(data).pos1;
     // console.log(document.getElementById(JSON.parse(data).id))
     document.getElementById(JSON.parse(data).id).style.top = pos2 - 45 + "px";
-    document.getElementById(JSON.parse(data).id).style.left = pos1 - 61.469 + "px";
+    document.getElementById(JSON.parse(data).id).style.left = pos1 - 50 + "px";
 };

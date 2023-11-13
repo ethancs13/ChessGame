@@ -14,12 +14,14 @@ table.chess_table tr td {
 table.chess_table tr:nth-child(odd) td:nth-child(odd),
 table.chess_table tr:nth-child(even) td:nth-child(even){
  background-color: lightgray;
- height: 122.88px;
+ height: 100px;
+ width: 100px;
 }
 table.chess_table tr:nth-child(odd) td:nth-child(even),
 table.chess_table tr:nth-child(even) td:nth-child(odd){
  background-color: gray;
- height: 122.88px;
+ height: 100px;
+ width: 100px;
 }
 table.chess_table tr td.WP { /* blancs */
  color: white; 

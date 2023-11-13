@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
-const WS_PORT = 'ws';
+const WS_PORT = 8080 || 'ws';
 const wss = new WebSocketServer({ port: WS_PORT })
 
 wss.on('listening', () => {
@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
 })
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 })
